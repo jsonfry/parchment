@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% import "macros.html" as macros %}
+
+{% block htmltitle %}
+  {% if page.title %}
+  {{ page.title }} |
+  {% endif %}
+{% endblock htmltitle %}
+
+{% block content %}
+  {% if not page.date %}
+    {{ macros::breadcrumbs(ancestors=page.ancestors, title=page.title) }}
+  {% endif %}
+
+  <article>
+    {% if page.date %}
+      <header>
+        <h1>
+        {{ page.title }}
+        </h1>
+      </header>
+    {% endif %}
+
+    {{ page.content | safe }}
+
+    <footer>
+      {% if page.date %}
+        Posted on <a href="{{ page.permalink }}">{{ macros::format_date(date=page.date) }}</a>
+        {% if page.authors %}
+          by
+          {% for author in page.authors %}
+            {{ author -}}
+            {% if not loop.last -%}
+              ,
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </footer>
+  </article>
+
+  {% if page.date %}{% if page.lower or page.higher %}
+    <nav>
+      <h2>What to do next?</h2>
+      {% if page.lower %}
+        <p>Read the previous post: <a href="{{ page.lower.permalink }}" rel="next">{{ page.lower.title }}</a></p>
+      {% endif %}
+      {% if page.higher %}
+        <p>Read the next post: <a c href="{{ page.higher.permalink }}" rel="prev">{{ page.higher.title }} </a></p>
+      {% endif %}
+
+      {% block after_post_nav %}
+      {% endblock after_post_nav %}
+    </nav>
+  {% endif %}{% endif %}
+
+{% endblock content %}
