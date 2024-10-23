@@ -1,0 +1,16 @@
+base_url = "https://whispers-on-parchement.jasonfry.co.uk"
+
+build_search_index = false
+title = "Whispers on Parchment"
+description = ""
+generate_feed = true
+feed_filename = "rss.xml"
+
+head_title = "Whispers on Parchment, by Edward Fitzgerald"
+ [[extra.footer_menu]]
+    [[extra.footer_menu.links]]
+      text = "Made With Zola"
+      href = "https://getzola.org"
+    [[extra.footer_menu.links]]
+      text = "Parchment theme, by Jason Fry"
+      href = "https://jasonfry.co.uk"
