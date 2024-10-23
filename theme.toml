@@ -3,7 +3,7 @@ description = "Parchemnt theme, by jasonfry.co.uk"
 license = "MIT"
 homepage = "https://github.com/json/parchment"
 min_version = "0.17.0"
-demo = "https://whispersonparchment.jasonfry.co.uk"
+demo = "https://whispers-on-parchment.jasonfry.co.uk"
 
 [author]
 name = "Jason Fry"

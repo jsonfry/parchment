@@ -6,7 +6,7 @@ Written to produce clean, semantic, simple-to-read HTML and CSS. The aim is for 
 
 Used at [jasonfry.co.uk](jasonfry.co.uk).
 
-Demo available at [whispersonparchment.jasonfry.co.uk](https://whispersonparchment.jasonfry.co.uk)
+Demo available at [whispers-on-parchment.jasonfry.co.uk](https://whispers-on-parchment.jasonfry.co.uk)
 
 ## Zola Features
 
