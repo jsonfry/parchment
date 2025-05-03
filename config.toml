@@ -10,8 +10,8 @@ feed_filenames = ["rss.xml"]
 head_title = "Whispers on Parchment, by Edward Fitzgerald"
  [[extra.footer_menu]]
     [[extra.footer_menu.links]]
+      text = "Demo for Parchment theme"
+      href = "https://github.com/jsonfry/parchment"
+    [[extra.footer_menu.links]]
       text = "Made With Zola"
       href = "https://getzola.org"
-    [[extra.footer_menu.links]]
-      text = "Demo for Parchment theme, by Jason Fry"
-      href = "https://jasonfry.co.uk"
