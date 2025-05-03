@@ -8,6 +8,22 @@ Used at [jasonfry.co.uk](jasonfry.co.uk).
 
 Demo available at [whispers-on-parchment.jasonfry.co.uk](https://whispers-on-parchment.jasonfry.co.uk)
 
+![Parchment screenshot](screenshot.png)
+
+## Installation
+
+First download this theme to your `themes` directory:
+
+```bash
+cd themes
+git clone https://github.com/jsonfry/parchment.git
+```
+and then enable it in your `config.toml`:
+
+```toml
+theme = "parchment"
+```
+
 ## Zola Features
 
 No support for taxonomy.
@@ -44,7 +60,7 @@ If you don't want to include the default CSS, then remove the line `{{ super() }
     {% if config.generate_feed %}
     <p>
         <a
-        href="{{ get_url(path=config.feed_filename) }}"
+        href="/rss.xml"
         title="subscribe - rss feed"
         >rss</a
         >
@@ -91,7 +107,7 @@ The following optional things are available to set in the `config.toml` file.
  head_title = "My Custom <head> Title"
  [[extra.footer_menu]]
     [[extra.footer_menu.links]]
-      text = "jf theme, by Jason Fry"
+      text = "Parchment theme, by Jason Fry"
       href = "https://jasonfry.co.uk"
     [[extra.footer_menu.links]]
       text = "Made With Zola"

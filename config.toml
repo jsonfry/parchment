@@ -3,8 +3,8 @@ base_url = "https://whispers-on-parchment.jasonfry.co.uk"
 build_search_index = false
 title = "Whispers on Parchment"
 description = ""
-generate_feed = true
-feed_filename = "rss.xml"
+generate_feeds = true
+feed_filenames = ["rss.xml"]
 
 head_title = "Whispers on Parchment, by Edward Fitzgerald"
  [[extra.footer_menu]]
