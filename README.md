@@ -4,7 +4,7 @@ A website theme for the static site generator [Zola](https://getzola.org).
 
 Written to produce clean, semantic, simple-to-read HTML and CSS. The aim is for a novice to press `F12` and be able to understand what is going on. No div-soup, No javascript, no third party frameworks.
 
-Used at [jasonfry.co.uk](jasonfry.co.uk).
+Used at [jasonfry.co.uk](https://jasonfry.co.uk).
 
 Demo available at [whispers-on-parchment.jasonfry.co.uk](https://whispers-on-parchment.jasonfry.co.uk)
 
