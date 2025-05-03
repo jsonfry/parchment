@@ -12,5 +12,5 @@ head_title = "Whispers on Parchment, by Edward Fitzgerald"
       text = "Made With Zola"
       href = "https://getzola.org"
     [[extra.footer_menu.links]]
-      text = "Parchment theme, by Jason Fry"
+      text = "Demo for Parchment theme, by Jason Fry"
       href = "https://jasonfry.co.uk"
