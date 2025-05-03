@@ -6,6 +6,7 @@ description = ""
 generate_feeds = true
 feed_filenames = ["rss.xml"]
 
+[extra]
 head_title = "Whispers on Parchment, by Edward Fitzgerald"
  [[extra.footer_menu]]
     [[extra.footer_menu.links]]
