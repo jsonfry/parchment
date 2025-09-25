@@ -32,9 +32,13 @@ No support for taxonomy.
 
 ### Base Template
 
+You can customize the following things:
+
 - Adding in your own things to `<head>` (e.g. favicons), your own CSS.
 - Adding some content to the footer
-- Adding something to the end of the body, like analytics. Create a file like the following in `templates/index.html`.
+- Adding something to the end of the body, like analytics. 
+
+Create a file like the following in `templates/index.html`.
 
 If you don't want to include the default CSS, then remove the line `{{ super() }}`
 
@@ -52,18 +56,16 @@ If you don't want to include the default CSS, then remove the line `{{ super() }
         body {
             font-family: "Comic Sans MS", "Comic Sans", cursive;
         }
-    <style>
+    </style>
 {% endblock head %}
 
 {% block footer %}
     <p>Created by a human</p>
-    {% if config.generate_feed %}
+    {% if config.generate_feeds %}
     <p>
-        <a
-        href="/rss.xml"
-        title="subscribe - rss feed"
-        >rss</a
-        >
+        <a href="/atom.xml" title="subscribe - rss feed">
+            rss
+        </a>
     </p>
     {% endif %}
 {% endblock footer %}
@@ -78,7 +80,7 @@ If you don't want to include the default CSS, then remove the line `{{ super() }
 
 ### Colors
 
-The color scheme is based on [Solarized](https://ethanschoonover.com/solarized/) and has both a dark and light theme included, that will follow the browser / OS setting. The colors are set with CSS variables, which you can override by setting your own CSS in `head` block.
+The color scheme is based on [Solarized](https://ethanschoonover.com/solarized/) and has both a dark and light theme included, that will follow the browser / OS setting. The colors are set with CSS variables, which you can override by setting your own CSS in `head` block (or however you set your CSS).
 
 ```css
     :root {
