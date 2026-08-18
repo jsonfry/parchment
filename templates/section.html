@@ -36,7 +36,7 @@
       {% endif %}
 
       {% if children %}
-        <nav>
+        <nav aria-label="Sub-pages">
           <ul>
             {% for page in children | sort(attribute="title") %}
               <li><a href="{{ page.permalink }}">
@@ -50,7 +50,7 @@
   {% endif %}
 
   {% if section.pages | filter(attribute="year") %}
-    <nav>
+    <nav aria-label="Archive list">
       {% for year, pages in section.pages | group_by(attribute="year") %}
         <h2 class="archive">{{ year }}</h2>
         <ul class="archive">
