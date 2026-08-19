@@ -1,5 +1,4 @@
 {% extends "index.html" %}
-{% import "macros.html" as macros %}
 
 {% block htmltitle %}
   {% if page.title %}
@@ -9,7 +8,7 @@
 
 {% block content %}
   {% if not page.date %}
-    {{ macros::breadcrumbs(ancestors=page.ancestors, title=page.title) }}
+    {{ <breadcrumbs ancestors={page.ancestors} title={page.title} /> }}
   {% endif %}
 
   <article>
@@ -25,7 +24,7 @@
 
     <footer>
       {% if page.date %}
-        Posted on <a href="{{ page.permalink }}">{{ macros::format_date(date=page.date) }}</a>
+        Posted on <a href="{{ page.permalink }}">{{ <format_date date={page.date} /> }}</a>
         {% if page.authors %}
           by
           {% for author in page.authors %}
@@ -48,7 +47,8 @@
       {% if page.higher %}
         <p>Read the next post: <a c href="{{ page.higher.permalink }}" rel="prev">{{ page.higher.title }} </a></p>
       {% endif %}
-
+      
+      <!-- https://github.com/Keats/tera/pull/1022 -->
       {% block after_post_nav %}
       {% endblock after_post_nav %}
     </nav>
