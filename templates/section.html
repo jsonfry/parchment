@@ -48,7 +48,13 @@
   
   {% if [p for p in section.pages if p.year is defined] %}
     <nav aria-label="Archive list">
-      {% for year, pages in [p for p in section.pages if p.year is defined] | group_by(attribute="year") %}
+      {% set map = [p for p in section.pages if p.year is defined] | group_by(attribute="year") %}
+      {% set_global years = [] %}
+      {% for year, ignored in map %}
+        {% set_global years = [...years, year] %}
+      {% endfor %}
+      {% for year in years | sort | reverse %}
+        {% set pages = map[year] %}
         <h2 class="archive">{{ year }}</h2>
         <ul class="archive">
           {% for page in pages %}
