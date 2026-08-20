@@ -1,12 +1,5 @@
 {% extends "index.html" %}
 
-{% import "macros.html" as macros %}
-
-{% macro format_date_no_year(date) -%}
-    {% set date_format = "%d %b" -%}
-    {{ date | date(format=date_format) -}}
-{% endmacro format_date_no_year %}
-
 {% block htmltitle %}
   {% if section.title %}
     {{ section.title }} |
@@ -14,19 +7,23 @@
 {% endblock htmltitle %}
 
 {% block content %}
-  {% set_global children = [] %}
-  {% for page in section.pages %}
-    {% if not page.date %}
-      {% set_global children = children | concat(with=page) %}
-    {% endif %}
-  {% endfor %}
-  {% for s in section.subsections %}
-    {% set section = get_section(path=s) %}
-    {% set_global children = children | concat(with=section) %}
-  {% endfor %}
+
+  {% set children = [
+  page
+  for page in section.pages
+  if not page.date
+  ] %}
+
+  {% set children = [
+    ...children,
+    ...[
+      get_section(path=s)
+      for s in section.subsections
+    ]
+  ] %}
 
   {% if children %}
-    {{ macros::breadcrumbs(ancestors=section.ancestors, title=section.title) }}
+    {{ <breadcrumbs ancestors={section.ancestors} title={section.title} /> }}
   {% endif %}
 
   {% if children or section.content %}
@@ -48,15 +45,21 @@
       {% endif %}
     </article>
   {% endif %}
-
-  {% if section.pages | filter(attribute="year") %}
+  
+  {% if [p for p in section.pages if p.year is defined] %}
     <nav aria-label="Archive list">
-      {% for year, pages in section.pages | group_by(attribute="year") %}
+      {% set map = [p for p in section.pages if p.year is defined] | group_by(attribute="year") %}
+      {% set_global years = [] %}
+      {% for year, ignored in map %}
+        {% set_global years = [...years, year] %}
+      {% endfor %}
+      {% for year in years | sort | reverse %}
+        {% set pages = map[year] %}
         <h2 class="archive">{{ year }}</h2>
         <ul class="archive">
           {% for page in pages %}
             <li>
-              <time datetime="{{page.date}}">{{self::format_date_no_year(date=page.date)}}</time>
+              <time datetime="{{page.date}}">{{ <format_date_no_year date={page.date} /> }}</time>
               <a href="{{ page.permalink }}">
                 {{ page.title }}
               </a>

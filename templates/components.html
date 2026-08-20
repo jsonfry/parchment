@@ -1,0 +1,27 @@
+{% set_global config_extra_date_format = config.extra.date_format %}
+
+{% component format_date(date) -%}
+    {% set date_format = config_extra_date_format | default(value="%B %e, %Y") -%}
+    {{ date | date(format=date_format) -}}
+{% endcomponent format_date %}
+
+{% component format_date_no_year(date) -%}
+    {% set date_format = "%d %b" -%}
+    {{ date | date(format=date_format) -}}
+{% endcomponent format_date_no_year %}
+
+{% component breadcrumbs(ancestors, title) %}
+    <nav aria-label="Breadcrumbs" class="breadcrumbs">
+        <ul>
+            {% for a in ancestors %}
+                {% if not loop.first %}
+                    {% set ancestor = get_section(path=a) %}
+                    <li>/ <a href="{{ ancestor.permalink }}">{{ ancestor.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% set ancestor = get_section(path=ancestors[0]) %}
+            <li>/ <h1>{{ title }}</h1></li>
+        </ul>
+    </nav>
+{% endcomponent breadcrumbs %}

@@ -21,10 +21,10 @@
     {% endblock head %}
 
     {% block rss %}
-      {% if config.feed_filenames is containing("rss.xml") %}
+      {% if config.feed_filenames is containing(pat="rss.xml") %}
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
       {% endif %}
-      {% if config.feed_filenames is containing("atom.xml") %}
+      {% if config.feed_filenames is containing(pat="atom.xml") %}
         <link rel="alternate" type="application/atom+xml" title="Atom" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
       {% endif %}
     {% endblock %}
